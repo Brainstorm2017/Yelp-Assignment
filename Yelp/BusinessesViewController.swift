@@ -10,7 +10,7 @@ import UIKit
 
 class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var businesses: [Business]!
+    var businesses: [Business] = []
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
