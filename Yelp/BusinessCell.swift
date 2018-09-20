@@ -1,35 +1,44 @@
 //
-//  BusinessCell.swift
+//  Business Cell.swift
 //  Yelp
 //
-//  Created by user144166 on 9/16/18.
+//  Created by user144166 on 9/17/18.
 //  Copyright © 2018 Timothy Lee. All rights reserved.
 //
 
 import UIKit
 
-class BusinessCell: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+class BusinessCell: UITableViewCell {
+    @IBOutlet weak var thumbImageView: UIImageView!
+    @IBOutlet weak var categoriesLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var reviewsCountLabel: UILabel!
+    @IBOutlet weak var ratingImageView: UIImageView!
+    @IBOutlet weak var distancelabel: UILabel!
+    @IBOutlet weak var NameLabel: UILabel!
+    
+    var business: Business! {
+        didSet {
+            NameLabel.text = business.name
+            thumbImageView.setImageWith(business.imageURL!)
+            categoriesLabel.text = business.categories
+            addressLabel.text = business.address
+            reviewsCountLabel.text = "\(business.reviewCount!) Reviews"
+            ratingImageView.image = business.ratingImage
+            distancelabel.text = business.distance
+            
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
     }
-    */
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
 
 }

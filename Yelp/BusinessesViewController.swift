@@ -21,18 +21,18 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         
         Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
             
-                self.businesses = businesses
-                self.tableView.reloadData()
+        
             
                 if let businesses = businesses {
+                    self.businesses = businesses
                     for business in businesses {
                         print(business.name!)
                         print(business.address!)
                     }
                 }
+             self.tableView.reloadData()
             
-            }
-        )
+        })
         
         /* Example of Yelp search with more search options specified
          Business.searchWithTerm(term: "Restaurants", sort: .distance, categories: ["asianfusion", "burgers"]) { (businesses, error) in
@@ -51,17 +51,12 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, numberofRowsInSection section: Int) -> Int{
-        if businesses != nil {
-            return businesses; !.count
-        }else{
-            return 0
-        }
+    func tableView( _ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return businesses.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Business Cell", forIndexPath: indexPath) as! BusinessCell
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessCell", for: indexPath) as! BusinessCell
         cell.business = businesses[indexPath.row]
         return cell
         
