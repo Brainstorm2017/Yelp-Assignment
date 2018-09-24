@@ -32,9 +32,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="138.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Xq-wX-4UV">
-                                                    <rect key="frame" x="26" y="26" width="118" height="87"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Xq-wX-4UV">
+                                                    <rect key="frame" x="8" y="7" width="65" height="65"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="65" id="363-qg-kg2"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="G9W-J4-NMi"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="ZZO-Jy-brd"/>
+                                                        <constraint firstAttribute="height" constant="65" id="acv-1d-TRG"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AyT-ny-f2T">
                                                     <rect key="frame" x="165" y="43" width="83" height="15"/>
@@ -47,17 +52,9 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Grand Pu Bah" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3k-0N-z9x">
-                                                    <rect key="frame" x="166" y="11" width="106" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.07 miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lQv-bB-LyI">
-                                                    <rect key="frame" x="318" y="11" width="78" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grand Pu Bah" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3k-0N-z9x">
+                                                    <rect key="frame" x="81" y="19" width="117.5" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -82,7 +79,24 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.07 miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lQv-bB-LyI">
+                                                    <rect key="frame" x="268.5" y="10" width="78" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0Xq-wX-4UV" firstAttribute="top" secondItem="Ds1-gL-llm" secondAttribute="top" constant="7" id="0G2-yf-weN"/>
+                                                <constraint firstItem="i3k-0N-z9x" firstAttribute="leading" secondItem="0Xq-wX-4UV" secondAttribute="trailing" constant="8" id="1HY-ED-ven"/>
+                                                <constraint firstItem="0Xq-wX-4UV" firstAttribute="top" secondItem="Ds1-gL-llm" secondAttribute="top" constant="7" id="Mrf-Oi-875"/>
+                                                <constraint firstItem="0Xq-wX-4UV" firstAttribute="leading" secondItem="Ds1-gL-llm" secondAttribute="leading" constant="8" id="QAO-6i-vdI"/>
+                                                <constraint firstItem="lQv-bB-LyI" firstAttribute="top" secondItem="Ds1-gL-llm" secondAttribute="top" constant="10" id="RAf-dD-lmD"/>
+                                                <constraint firstItem="i3k-0N-z9x" firstAttribute="top" secondItem="Ds1-gL-llm" secondAttribute="topMargin" constant="8" id="W04-7R-DBg"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="0Xq-wX-4UV" secondAttribute="bottom" constant="12" id="WpJ-hc-aV9"/>
+                                                <constraint firstItem="0Xq-wX-4UV" firstAttribute="leading" secondItem="Ds1-gL-llm" secondAttribute="leading" constant="8" id="n6O-iZ-Msi"/>
+                                                <constraint firstItem="lQv-bB-LyI" firstAttribute="leading" secondItem="i3k-0N-z9x" secondAttribute="trailing" constant="70" id="y6r-Mq-gQ0"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="NameLabel" destination="i3k-0N-z9x" id="vCC-R2-Vt3"/>
