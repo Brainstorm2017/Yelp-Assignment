@@ -8,25 +8,27 @@
 
 import UIKit
 
-class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     var businesses: [Business] = []
+    var filteredbusinesses: [Business] = []
     
     @IBOutlet weak var SearchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
-        searchBar = UISearchBar()
+        super.viewDidLoad()
+        let searchBar = UISearchBar()
         searchBar.sizeToFit()
-          navigationItem.titleView = searchBar
-        searchDisplayController?.displaysSearchBarInNavigationBar = true
-        searchController.searchBar.sizeToFit()
-        navigationItem.titleView = searchController.searchBar
-        searchController.hidesNavigationBarDuringPresentation = false        super.viewDidLoad()
+        searchBar.delegate = self
+        navigationItem.titleView = searchBar
+        definesPresentationContext = true
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
+        
+        
         
         Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
             
@@ -34,6 +36,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
             
                 if let businesses = businesses {
                     self.businesses = businesses
+                    self.filteredbusinesses = businesses
                     for business in businesses {
                         print(business.name!)
                         print(business.address!)
@@ -55,18 +58,27 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if let searchTxt = searchBar.text {
+            filteredbusinesses = searchTxt.isEmpty ? businesses : businesses.filter({ (business: Business) -> Bool in
+                return business.name?.range(of: searchTxt, options: .caseInsensitive, range: nil, locale: nil) != nil
+            })
+            tableView.reloadData()
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func tableView( _ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return businesses.count
+        return filteredbusinesses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessCell", for: indexPath) as! BusinessCell
-        cell.business = businesses[indexPath.row]
+        cell.business = filteredbusinesses[indexPath.row]
         return cell
         
     }
